@@ -62,17 +62,14 @@ class TwitterHandler(object):
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger()
 
-logger.debug(str(os.environ))
-
-
 app = Flask(__name__)
 
-@app.route("/incomingsms",methods=['GET','POST'])
+@app.route("/incomingsms",methods=['POST'])
 def smspost():
     config_file_path = request.environ['SMSTOTWITTER_CONFIG_FILE']
     config = yaml.load(open(config_file_path))
     th = TwitterHandler(config['twitter'])
-    th.tweet(request.form['smsmessage'])
+    th.tweet(request.form['message'])
     return "OK"
 
 if __name__ == "__main__":
