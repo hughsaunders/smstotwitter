@@ -4,14 +4,10 @@ import os
 import re
 import sys
 
-
 import yaml
 import twitter
 from flask import Flask
 from flask import request
-app = Flask(__name__)
-
-
 
 
 class TwitterHandler(object):
@@ -70,6 +66,8 @@ config = yaml.load(
     open(os.environ.get('SMS2TWITTER_CONFIG_FILE')))
 
 th = TwitterHandler(config['twitter'])
+
+app = Flask(__name__)
 
 @app.route("/incomingsms",methods=['GET','POST'])
 def hello():
