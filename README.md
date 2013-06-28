@@ -12,12 +12,12 @@ application or within another webserver via wsgi (see smstotwitter.wsgi).
 Configuration is via a yaml configuration file (see sample_config.yml).
 
 
-## Sample apache vhost for using WSGI:
+#### Sample apache vhost for using WSGI:
 
 ```apache
 <VirtualHost *:80>
 	ServerName example.com
-	ServerAdmin admin@wherenow.org
+	ServerAdmin admin@example.com
 
 	WSGIDaemonProcess smstotwitter threads=5
 	WSGIScriptAlias / /path/to/smstotwitter/smstotwitter.wsgi
